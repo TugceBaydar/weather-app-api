@@ -21,18 +21,40 @@ success: function(data) {
 	console.log(data.name)
 	console.log(data.main.temp)
 
-	var temp = 'temperature ' + data.main.temp;
-	var name = 'city name: ' + data.name;
+	// var temp = 'temperature ' + data.main.temp;
+	// var name = 'city name: ' + data.name;
 
-	var newH1 = document.createElement('h1');
-	var newH2 = document.createElement('h2');
+	var newTable = document.createElement("TABLE");
+	var newTH = document.createElement("TH");
+	var newTH2 = document.createElement("TH");
+	var newTH3 = document.createElement("TH");
+	var newTR = document.createElement("TR");
+	var newTR2 = document.createElement("TR");
+	var newTD = document.createElement("TD");
+	var newTD2 = document.createElement("TD");
+	var newTD3 = document.createElement("TD");
 
-	newH1.innerText = temp;
-	newH2.innerText = name;
+  newTH.innerText = 'Temperature '
+  newTH2.innerText = 'Wind Speed'
+	newTH3.innerText = 'Humidity ';
+	newTD.innerText = data.main.temp;
+	newTD2.innerText = data.wind.speed;
+	newTD3.innerText = data.main.humidity;
+
+  newTR2.appendChild(newTD);
+	newTR2.appendChild(newTD2);
+	newTR2.appendChild(newTD3);
+	newTR.appendChild(newTH);
+	newTR.appendChild(newTH2);
+	newTR.appendChild(newTH3);
+	newTable.appendChild(newTR);
+	newTable.appendChild(newTR2);
+
+	newTable.className = 'table table-striped table table-bordered'
 
 	var results = document.getElementById("results");
-	results.appendChild(newH1);
-	results.appendChild(newH2);
+	results.appendChild(newTable);
+
 
 
 }
